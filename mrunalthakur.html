@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mrunal Thakur | Filmography</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { 'muse-gold': '#D4AF37', 'muse-black': '#1a1a1a', 'muse-light': '#f9f9f9' }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Mobile-First Adjustments */
+        .slider-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: bottom center; transition: opacity 0.8s ease-in-out; opacity: 0; }
+        .slider-image.active { opacity: 1; }
+        
+        .fade-in { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s forwards; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        
+        .delay-100 { animation-delay: 0.1s; } 
+        .delay-200 { animation-delay: 0.2s; }
+        
+        /* Blur for locked content */
+        .blur-lock { filter: blur(8px); pointer-events: none; user-select: none; }
+        
+        /* Hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-neutral-950 text-white font-sans antialiased selection:bg-muse-gold selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl md:text-2xl font-bold tracking-tighter text-white">MUSE<span class="text-muse-gold">.</span></a>
+            <a href="index.html" class="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> <span class="hidden md:inline">Back to Gallery</span><span class="md:hidden">Back</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- CINEMATIC DARK HERO -->
+    <header class="relative min-h-screen pt-16 flex flex-col md:flex-row">
+        <!-- Text Content -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-20 py-12 bg-neutral-900 z-10 order-2 md:order-1">
+            <span class="text-muse-gold text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] mb-4 block fade-in">The Icon</span>
+            <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl leading-none mb-6 text-white fade-in tracking-tighter">MRUNAL<br>THAKUR</h1>
+            <p class="text-gray-400 text-sm md:text-lg font-light max-w-xl fade-in delay-100 mb-8">
+                Actress. Model. A force of elegance in Indian Cinema. Experience her journey in ultra-high definition.
+            </p>
+            <div class="flex gap-4 fade-in delay-200">
+                <button onclick="document.getElementById('red-carpet').scrollIntoView({behavior:'smooth'})" class="bg-white text-black px-6 md:px-8 py-3 md:py-4 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-muse-gold hover:text-white transition-colors">Exclusive Look</button>
+            </div>
+        </div>
+        
+        <!-- Video Hero -->
+        <div class="w-full md:w-1/2 h-[50vh] md:h-auto relative overflow-hidden bg-black order-1 md:order-2">
+            <!-- Ensure mtvh1.mp4 is in the same folder -->
+            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                <source src="mtvh1.mp4" type="video/mp4">
+            </video>
+            <!-- Gradient Overlay for smooth blend on mobile -->
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent md:hidden"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-neutral-900 via-transparent to-transparent hidden md:block"></div>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="py-12 md:py-16 bg-neutral-900 border-y border-white/5 relative z-30">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-gray-300">
+            <div><span class="block text-3xl md:text-4xl font-serif text-white mb-2">35+</span><span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">Projects</span></div>
+            <div><span class="block text-3xl md:text-4xl font-serif text-white mb-2">24M</span><span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">Followers</span></div>
+            <div><span class="block text-3xl md:text-4xl font-serif text-white mb-2">#3</span><span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">IMDb Rank</span></div>
+            <div><span class="block text-3xl md:text-4xl font-serif text-white mb-2">2012</span><span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">Debut</span></div>
+        </div>
+    </section>
+
+    <!-- VIDEO SPOTLIGHT (Red Carpet Radiance) -->
+    <section id="red-carpet" class="py-16 md:py-24 bg-white text-muse-black relative z-30">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-start gap-12 md:gap-16">
+            <div class="w-full md:w-1/2">
+                <span class="text-muse-gold text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2 block">Spotted</span>
+                <h2 class="font-serif text-3xl md:text-5xl mb-6">Red Carpet Radiance</h2>
+                <div class="h-1 w-20 bg-muse-black mb-8"></div>
+                <p class="text-gray-600 mb-6 font-light text-base md:text-lg leading-relaxed">
+                    Mrunal turns heads at the <em>Pinkvilla Screen & Style Icons</em> awards. An exclusive look at her stunning black ensemble that took the internet by storm.
+                </p>
+                <div class="flex flex-wrap gap-4 md:gap-6 text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 mb-10">
+                    <span class="flex items-center gap-2"><i data-lucide="camera" class="w-4 h-4 text-muse-gold"></i> Paparazzi Cut</span>
+                    <span class="flex items-center gap-2"><i data-lucide="video" class="w-4 h-4 text-muse-gold"></i> 4K Enhanced</span>
+                </div>
+                
+                <!-- Added Small Image Grid -->
+                <div class="grid grid-cols-2 gap-4 mt-8">
+                    <img src="https://i.ibb.co/hnQsTS8/5.png" class="w-full h-40 md:h-48 object-cover object-top grayscale hover:grayscale-0 transition-all duration-500 rounded-sm shadow-lg">
+                    <img src="https://i.ibb.co/V0yxj9q0/1.png" class="w-full h-40 md:h-48 object-cover object-top grayscale hover:grayscale-0 transition-all duration-500 rounded-sm shadow-lg">
+                </div>
+            </div>
+            
+            <div class="w-full md:w-1/2 flex justify-center md:sticky md:top-24">
+                <!-- Video Container -->
+                <div class="relative w-[280px] md:w-[320px] h-[500px] md:h-[580px] rounded-[2rem] overflow-hidden shadow-2xl border-8 border-gray-900 bg-black">
+                    <!-- Ensure MTV1.mp4 is in the same folder -->
+                    <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                        <source src="MTV1.mp4" type="video/mp4">
+                        <!-- Fallback -->
+                        <img src="https://i.ibb.co/Tdqdw6m/6.png" class="w-full h-full object-cover">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 pointer-events-none"></div>
+                    <div class="absolute bottom-6 left-6 text-white z-10 pointer-events-none">
+                         <p class="text-muse-gold text-[10px] font-bold uppercase tracking-widest mb-1">Live from Mumbai</p>
+                         <p class="font-serif text-xl">Screen & Style Icons</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Releases (Preview) -->
+    <section class="py-16 md:py-24 max-w-7xl mx-auto px-6 relative z-30 bg-muse-light">
+        <h2 class="font-serif text-3xl md:text-5xl mb-8 md:mb-12">Latest Releases (Preview)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <!-- Movie 1 -->
+            <div class="group relative overflow-hidden h-[400px] md:h-[500px] shadow-xl">
+                <img src="https://i.ibb.co/qQDb6F7/3.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Hi Nanna">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90"></div>
+                <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+                    <span class="text-muse-gold text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2 block">2023 Blockbuster</span><h3 class="text-white font-serif text-3xl md:text-4xl mb-4">Hi Nanna</h3>
+                    <div class="flex gap-4"><a href="https://www.youtube.com/results?search_query=hi+nanna+trailer" target="_blank" class="bg-white text-black px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-muse-gold hover:text-white transition-colors">Watch Trailer</a></div>
+                </div>
+            </div>
+            <!-- Movie 2 -->
+            <div class="group relative overflow-hidden h-[400px] md:h-[500px] shadow-xl">
+                <img src="https://i.ibb.co/VYHVCbW1/2.png" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" alt="Family Star">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90"></div>
+                <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+                    <span class="text-muse-gold text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2 block">2024 Release</span><h3 class="text-white font-serif text-3xl md:text-4xl mb-4">The Family Star</h3>
+                    <div class="flex gap-4"><a href="https://www.youtube.com/results?search_query=the+family+star+trailer" target="_blank" class="bg-white text-black px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-muse-gold hover:text-white transition-colors">Watch Trailer</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM LOCKED SECTION -->
+    <section class="py-16 md:py-24 bg-neutral-900 text-white relative z-30 overflow-hidden">
+        <div class="absolute inset-0 bg-muse-gold/5"></div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            
+            <div class="mb-8 flex justify-center"><div class="bg-muse-gold/20 p-4 md:p-6 rounded-full"><i data-lucide="lock" class="w-8 h-8 md:w-12 md:h-12 text-muse-gold"></i></div></div>
+            
+            <h2 class="font-serif text-3xl md:text-6xl mb-4 md:mb-6">The Inner Circle</h2>
+            <p class="text-gray-400 text-sm md:text-lg mb-8 md:mb-12 max-w-2xl mx-auto">Unlock exclusive access to Mrunal's world. Unreleased 4K edits, intimate talk sessions, and confirmed upcoming project leaks.</p>
+
+            <!-- Locked Content Visuals (Blurred) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12 md:mb-16 opacity-30 blur-sm select-none pointer-events-none">
+                <div class="bg-white/5 border border-white/10 p-6 md:p-8"><span class="text-muse-gold text-[10px] font-bold uppercase block mb-2">Upcoming</span><h3 class="font-serif text-lg md:text-xl">Pooja Meri Jaan</h3></div>
+                <div class="bg-white/5 border border-white/10 p-6 md:p-8"><span class="text-muse-gold text-[10px] font-bold uppercase block mb-2">Exclusive</span><h3 class="font-serif text-lg md:text-xl">4K Fan Edits</h3></div>
+                <div class="bg-white/5 border border-white/10 p-6 md:p-8"><span class="text-muse-gold text-[10px] font-bold uppercase block mb-2">Live Session</span><h3 class="font-serif text-lg md:text-xl">Talks with Mrunal</h3></div>
+            </div>
+            
+            <!-- Countdown Timer -->
+            <div class="flex justify-center gap-4 md:gap-8 mb-12 text-center opacity-50">
+                <div><span id="days" class="block text-3xl md:text-5xl font-serif text-white">00</span><span class="text-[10px] text-gray-500 uppercase">Days</span></div>
+                <span class="text-3xl md:text-5xl font-serif text-muse-gold">:</span>
+                <div><span id="hours" class="block text-3xl md:text-5xl font-serif text-white">00</span><span class="text-[10px] text-gray-500 uppercase">Hours</span></div>
+                <span class="text-3xl md:text-5xl font-serif text-muse-gold">:</span>
+                <div><span id="minutes" class="block text-3xl md:text-5xl font-serif text-white">00</span><span class="text-[10px] text-gray-500 uppercase">Minutes</span></div>
+            </div>
+
+            <!-- Pricing Card -->
+            <div class="bg-white text-black max-w-md mx-auto p-8 shadow-2xl relative rounded-sm">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-muse-gold text-white text-[10px] font-bold uppercase px-4 py-1 tracking-widest">Limited Time Offer</div>
+                <h3 class="font-serif text-2xl md:text-3xl mb-2">Individual Star Pass</h3>
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <span class="text-gray-400 line-through text-base md:text-lg">₹1999</span>
+                    <span class="text-4xl md:text-5xl font-serif">₹549</span>
+                </div>
+                
+                <!-- Payment Form (AJAX) -->
+                <form id="subscription-form" action="https://formspree.io/f/xqedlawj" method="POST" class="space-y-4 text-left">
+                    <input type="hidden" name="subscription_type" value="Individual Pass - Mrunal Thakur - ₹549">
+                    <div><input type="text" name="name" required placeholder="Full Name" class="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-muse-gold text-sm font-sans placeholder-gray-500"></div>
+                    <div><input type="tel" name="phone" required placeholder="Phone Number" class="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-muse-gold text-sm font-sans placeholder-gray-500"></div>
+                    <div><input type="email" name="email" required placeholder="Email Address" class="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-muse-gold text-sm font-sans placeholder-gray-500"></div>
+                    <button type="submit" class="w-full bg-black text-white py-4 text-xs font-bold uppercase tracking-widest hover:bg-muse-gold transition-colors mt-4">Unlock Full Access</button>
+                </form>
+                <p class="text-center text-[10px] text-gray-400 mt-4 flex items-center justify-center gap-1"><i data-lucide="shield-check" class="w-3 h-3"></i> 100% Secure Payment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-950 text-white py-12 text-center relative z-30 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="font-serif text-2xl font-bold mb-2">MUSE.</p>
+            <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mb-8">Curated for the fans of Cinema</p>
+            <a href="index.html" class="inline-block border-b border-white pb-1 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:text-muse-gold hover:border-muse-gold transition-colors">Back to Main Gallery</a>
+        </div>
+    </footer>
+
+    <!-- SUBSCRIPTION POPUP MODAL -->
+    <div id="subscription-modal" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-500">
+        <div class="bg-white w-full max-w-md p-8 relative shadow-2xl border-t-4 border-muse-gold transform scale-95 transition-transform duration-500" id="sub-modal-content">
+            <button onclick="closeSubscriptionModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <div class="text-center mb-6">
+                <p class="text-muse-gold text-xs font-bold uppercase tracking-widest mb-2">Individual Star Pass</p>
+                <h2 class="font-serif text-2xl md:text-3xl text-muse-black mb-2">Unlock Mrunal Thakur</h2>
+                <p class="text-gray-500 text-xs md:text-sm">Exclusive Gallery + Behind the Scenes Access</p>
+            </div>
+            <div class="text-center mb-8 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                <div class="flex items-center justify-center gap-3">
+                    <span class="text-gray-400 line-through text-base md:text-lg">₹1999</span>
+                    <span class="text-3xl md:text-4xl font-serif text-muse-black">₹549</span>
+                </div>
+                <span class="block text-green-600 text-[10px] font-bold uppercase tracking-wide mt-2">Limited Time Offer</span>
+            </div>
+            <form id="popup-subscription-form" class="space-y-4">
+                <input type="hidden" name="subscription_type" value="Individual Pass - Mrunal Thakur - ₹549">
+                <div><input type="text" name="name" required placeholder="Full Name" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-muse-gold text-sm font-sans placeholder-gray-500"></div>
+                <div><input type="tel" name="phone" required placeholder="Phone Number" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-muse-gold text-sm font-sans placeholder-gray-500"></div>
+                <div><input type="email" name="email" required placeholder="Email Address" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-muse-gold text-sm font-sans placeholder-gray-500"></div>
+                <button type="submit" class="w-full bg-muse-black text-white py-4 text-xs font-bold uppercase tracking-widest hover:bg-muse-gold transition-colors mt-4 shadow-lg">Proceed to Payment</button>
+            </form>
+            <p class="text-center text-[10px] text-gray-400 mt-4 flex items-center justify-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> Secure payment via Razorpay.</p>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        // --- Timer ---
+        function updateTimer() {
+            const d = 14; const h = 12; const m = 45;
+            document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+        }
+        updateTimer();
+
+        // --- Modals ---
+        function showSubscriptionModal() {
+            const modal = document.getElementById('subscription-modal'); const content = document.getElementById('sub-modal-content');
+            modal.classList.remove('hidden'); setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
+        }
+        function closeSubscriptionModal() {
+            const modal = document.getElementById('subscription-modal'); const content = document.getElementById('sub-modal-content');
+            modal.classList.add('opacity-0'); content.classList.remove('scale-100'); content.classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 500);
+        }
+        window.addEventListener('load', () => { setTimeout(showSubscriptionModal, 500); });
+
+        // --- AJAX Form Logic ---
+        function handleFormSubmit(id) {
+            const f = document.getElementById(id); if(!f) return;
+            f.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = f.querySelector('button'); const oldText = btn.innerText; btn.innerText = 'Processing...'; btn.disabled = true;
+                try {
+                    await fetch('https://formspree.io/f/xqedlawj', { method:'POST', body: new FormData(f), headers:{'Accept':'application/json'} });
+                    btn.innerText = 'Redirecting...';
+                    window.location.href = "https://razorpay.com/payment-links";
+                } catch(err) { alert('Error. Try again.'); btn.innerText = oldText; btn.disabled = false; }
+            });
+        }
+        handleFormSubmit('subscription-form');
+        handleFormSubmit('popup-subscription-form');
+    </script>
+</body>
+</html>
