@@ -54,7 +54,8 @@
         @keyframes gradient-xy { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
         .slider-mask { mask-image: linear-gradient(to right, transparent, black 15%); }
-        @media (max-width: 768px) { .slider-mask { mask-image: linear-gradient(to bottom, transparent, black 10%); } }
+        /* Adjusted mobile mask to be less aggressive so we see the image, but we will use an overlay for text contrast */
+        @media (max-width: 768px) { .slider-mask { mask-image: none; } }
         
         /* Blur Lock */
         .blur-lock { filter: blur(6px) grayscale(0.4); transition: filter 0.3s; }
@@ -85,7 +86,11 @@
     <div id="home-view">
         <header class="relative h-screen flex items-center overflow-hidden">
             <div class="absolute inset-0 z-0 animate-gradient-bg"></div>
-            <div class="absolute top-0 right-0 w-full md:w-[60%] h-full z-10 slider-mask" id="hero-slider"></div>
+            
+            <!-- Mobile Dark Overlay for Text Contrast -->
+            <div class="absolute inset-0 z-10 bg-black/40 md:hidden pointer-events-none"></div>
+
+            <div class="absolute top-0 right-0 w-full md:w-[60%] h-full z-0 md:z-10 slider-mask" id="hero-slider"></div>
             
             <div class="relative z-20 max-w-7xl mx-auto px-6 w-full flex justify-start items-center h-full pointer-events-none">
                 <div class="max-w-xl text-left mt-16 pointer-events-auto">
@@ -93,11 +98,17 @@
                         <span class="h-[1px] w-12 bg-muse-gold"></span>
                         <p class="text-muse-gold uppercase tracking-[0.3em] text-xs font-bold">Cover Star</p>
                     </div>
-                    <h1 class="fade-up font-serif text-6xl md:text-8xl leading-[0.9] mb-6 text-muse-black drop-shadow-sm">Mrunal <br/><span class="italic font-light text-gray-500">Thakur</span></h1>
-                    <p class="fade-up text-gray-600 text-lg font-light leading-relaxed mb-10 max-w-md">From the heartfelt emotions of <em>Sita Ramam</em> to the modern grace of cinema.</p>
+                    
+                    <!-- Updated Text Colors for Mobile Visibility -->
+                    <h1 class="fade-up font-serif text-6xl md:text-8xl leading-[0.9] mb-6 text-white md:text-muse-black drop-shadow-md md:drop-shadow-sm">Mrunal <br/><span class="italic font-light text-gray-200 md:text-gray-500">Thakur</span></h1>
+                    
+                    <p class="fade-up text-gray-200 md:text-gray-600 text-lg font-light leading-relaxed mb-10 max-w-md drop-shadow-sm">From the heartfelt emotions of <em>Sita Ramam</em> to the modern grace of cinema.</p>
+                    
                     <div class="fade-up flex gap-4">
-                        <a href="#featured" onclick="navigateToSection(event, 'featured')" class="inline-block bg-black text-white border border-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-black transition-all duration-300">View Gallery</a>
-                        <button onclick="showTrends(event)" class="inline-block border border-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300">Read Latest Trends -></button>
+                        <!-- Updated Buttons for Mobile Visibility -->
+                        <a href="#featured" onclick="navigateToSection(event, 'featured')" class="inline-block bg-white text-black md:bg-black md:text-white border border-white md:border-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-white md:hover:text-black transition-all duration-300">View Gallery</a>
+                        
+                        <button onclick="showTrends(event)" class="inline-block border border-white text-white md:border-black md:text-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black md:hover:bg-black md:hover:text-white transition-all duration-300">Read Latest Trends -></button>
                     </div>
                 </div>
             </div>
@@ -144,7 +155,7 @@
                         <video autoplay loop muted playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><source src="PHv1.mp4" type="video/mp4"></video>
                         <div class="absolute bottom-4 left-4 z-20"><span class="bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-black">Pooja Hegde</span></div>
                     </div>
-                     <!-- Video 6: Keerthy -->
+                      <!-- Video 6: Keerthy -->
                     <div class="relative w-[300px] h-[500px] shadow-xl overflow-hidden rounded-lg flex-shrink-0 group">
                         <video autoplay loop muted playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><source src="KSV1.mp4" type="video/mp4"></video>
                         <div class="absolute bottom-4 left-4 z-20"><span class="bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-black">Keerthy Suresh</span></div>
@@ -331,7 +342,7 @@
             "https://i.ibb.co/DfJbPgQK/image.png",
             "https://i.ibb.co/BHksk70r/image.png",
             "https://i.ibb.co/1YTnrq6w/rashim.jpg",
-            "https://i.ibb.co/4n9F95N0/image.png"
+            "keethyimg.jpg"
         ];
         
         const actresses = [
@@ -340,7 +351,7 @@
             { name: "Samantha", title: "Boundary Breaker", img: "https://i.ibb.co/DfJbPgQK/image.png", desc: "Fearless in her choices." },
             { name: "Pooja Hegde", title: "Pan-Indian Glamour", img: "https://i.ibb.co/BHksk70r/image.png", desc: "Lights up the screen." },
             { name: "Rashmika Mandanna", title: "National Crush", img: "https://i.ibb.co/1YTnrq6w/rashim.jpg", desc: "Infectious smile." },
-            { name: "Keerthy Suresh", title: "The Mahanati", img: "https://i.ibb.co/4n9F95N0/image.png", desc: "Defining excellence." }
+            { name: "Keerthy Suresh", title: "The Mahanati", img: "keethyimg.jpg", desc: "Defining excellence." }
         ];
 
         function initSlider() {
