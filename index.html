@@ -78,19 +78,9 @@
                 <a href="#" onclick="showTrends(event)" class="hover:text-muse-gold transition-colors font-black text-black">Trends Edit</a>
                 <a href="#join" onclick="navigateToSection(event, 'join')" class="hover:text-black transition-colors cursor-pointer">Get Featured</a>
             </div>
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-black z-50 p-2" onclick="toggleMobileMenu()"><i data-lucide="menu"></i></button>
+            <button class="md:hidden text-black" onclick="alert('Mobile menu coming soon!')"><i data-lucide="menu"></i></button>
         </div>
     </nav>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[60] flex flex-col items-center justify-center space-y-8 transition-transform duration-300 translate-x-full md:hidden">
-        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-black p-2 hover:text-muse-gold transition-colors"><i data-lucide="x" class="w-8 h-8"></i></button>
-        <a href="#featured" onclick="mobileNavigate('featured')" class="text-3xl font-serif text-muse-black hover:text-muse-gold transition-colors">The Icons</a>
-        <a href="#fashion" onclick="mobileNavigate('fashion')" class="text-3xl font-serif text-muse-black hover:text-muse-gold transition-colors">Beauty & Fashion</a>
-        <a href="#" onclick="mobileShowTrends()" class="text-3xl font-serif text-muse-gold hover:text-black transition-colors font-bold">Trends Edit</a>
-        <a href="#join" onclick="mobileNavigate('join')" class="text-3xl font-serif text-muse-black hover:text-muse-gold transition-colors">Get Featured</a>
-    </div>
 
     <!-- HOME VIEW -->
     <div id="home-view">
@@ -98,8 +88,7 @@
             <div class="absolute inset-0 z-0 animate-gradient-bg"></div>
             
             <!-- Mobile Dark Overlay for Text Contrast -->
-            <!-- This forces a dark tint on mobile so white text is readable -->
-            <div class="absolute inset-0 z-10 bg-black/60 md:hidden pointer-events-none"></div>
+            <div class="absolute inset-0 z-10 bg-black/40 md:hidden pointer-events-none"></div>
 
             <div class="absolute top-0 right-0 w-full md:w-[60%] h-full z-0 md:z-10 slider-mask" id="hero-slider"></div>
             
@@ -116,6 +105,7 @@
                     <p class="fade-up text-gray-200 md:text-gray-600 text-lg font-light leading-relaxed mb-10 max-w-md drop-shadow-sm">From the heartfelt emotions of <em>Sita Ramam</em> to the modern grace of cinema.</p>
                     
                     <div class="fade-up flex gap-4">
+                        <!-- Updated Buttons for Mobile Visibility -->
                         <a href="#featured" onclick="navigateToSection(event, 'featured')" class="inline-block bg-white text-black md:bg-black md:text-white border border-white md:border-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-white md:hover:text-black transition-all duration-300">View Gallery</a>
                         
                         <button onclick="showTrends(event)" class="inline-block border border-white text-white md:border-black md:text-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black md:hover:bg-black md:hover:text-white transition-all duration-300">Read Latest Trends -></button>
@@ -344,29 +334,6 @@
             setTimeout(() => { const element = document.getElementById(id); if(element) element.scrollIntoView({ behavior: 'smooth' }); }, 10); 
         }
 
-        // --- Mobile Menu Functions ---
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('translate-x-full')) {
-                menu.classList.remove('translate-x-full');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            } else {
-                menu.classList.add('translate-x-full');
-                document.body.style.overflow = '';
-            }
-        }
-
-        function mobileNavigate(id) {
-            toggleMobileMenu();
-            navigateToSection(null, id);
-        }
-
-        function mobileShowTrends() {
-            toggleMobileMenu();
-            showTrends(null);
-        }
-        // -----------------------------
-
         const mrunalImages = [ "https://i.ibb.co/V0yxj9q0/1.png", "https://i.ibb.co/VYHVCbW1/2.png", "https://i.ibb.co/qQDb6F7/3.png", "https://i.ibb.co/zTtQnZx5/4.png", "https://i.ibb.co/hnQsTS8/5.png" ];
         // Full Image Array
         const allActressesImages = [
@@ -443,7 +410,7 @@
                 try {
                     await fetch('https://formspree.io/f/xqedlawj', { method:'POST', body: new FormData(f), headers:{'Accept':'application/json'} });
                     btn.innerText = 'Redirecting...';
-                    window.location.href = "https://razorpay.com/payment-links";    
+                    window.location.href = "https://rzp.io/rzp/ceQyOQa"; // Updated redirect link
                 } catch(err) { alert('Error. Try again.'); btn.innerText = oldText; btn.disabled = false; }
             });
         }
