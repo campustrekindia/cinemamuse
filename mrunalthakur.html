@@ -274,7 +274,7 @@
                 try {
                     await fetch('https://formspree.io/f/xqedlawj', { method:'POST', body: new FormData(f), headers:{'Accept':'application/json'} });
                     btn.innerText = 'Redirecting...';
-                    window.location.href = "https://razorpay.com/payment-links";
+                    window.location.href = "https://rzp.io/rzp/S4RyFLD"; // Updated redirect link
                 } catch(err) { alert('Error. Try again.'); btn.innerText = oldText; btn.disabled = false; }
             });
         }
